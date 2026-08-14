@@ -48,6 +48,11 @@
   .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: #888; text-decoration: none; transition: color 0.2s; }
   .back-link:hover { color: #1a1a1a; text-decoration: none; }
 
+  /* Guide illustrations */
+  .guide-img { margin: 1.25rem 0 1.5rem; }
+  .guide-img img { width: 100%; max-width: 720px; border-radius: 10px; border: 1px solid #e8e8e8; display: block; }
+  .guide-img figcaption { font-size: 0.78rem; color: #999; margin-top: 0.5rem; font-style: italic; }
+
   /* Footer override */
   #footer { border-top: 1px solid #eee; }
   #footer p { font-size: 0.8rem; color: #bbb; }
@@ -235,6 +240,10 @@
         <section id="etape-4">
           <h3>4. Importer l'extrait sur Flow</h3>
           <p>Un projet, l'extrait, le modèle Gemini Omni Flash, le mode ingrédient, puis le prompt.</p>
+          <figure class="guide-img">
+            <img src="images/importer-flow.png" alt="Interface Google Flow — importer un extrait vidéo" loading="lazy">
+            <figcaption>Interface Flow : import de l'extrait et sélection du modèle Gemini Omni Flash.</figcaption>
+          </figure>
         </section>
 
         <hr class="divider">
@@ -259,6 +268,10 @@
         <section id="etape-7">
           <h3>7. Exporter</h3>
           <p>En 1080p, puis directement sur la timeline de montage. Pas de conversion intermédiaire.</p>
+          <figure class="guide-img">
+            <img src="images/exporter.png" alt="Export du résultat en 1080p" loading="lazy">
+            <figcaption>Export en 1080p depuis Flow, prêt pour le montage.</figcaption>
+          </figure>
         </section>
 
         <hr class="divider">
@@ -271,6 +284,10 @@
             <li><strong>Les raccords.</strong> On repère les points où le mouvement est exactement le même d'un extrait à l'autre, ou les keyframes précises où le sujet refait un geste identique. C'est là qu'on fait matcher les prises. Le chevauchement prévu à l'étape 2 sert exactement à ça.</li>
             <li><strong>Le son.</strong> On utilise la bande son de la vidéo originale, et on pose les VFX par-dessus. Sur les passages parlés, les modèles ne tiennent pas encore la consistance audio d'un extrait à l'autre. Si l'audio généré est bon, rien n'interdit de le garder, mais l'original reste le choix le plus sûr.</li>
           </ul>
+          <figure class="guide-img">
+            <img src="images/monter.png" alt="Montage des extraits sur la timeline" loading="lazy">
+            <figcaption>Assemblage des extraits générés sur la timeline de montage.</figcaption>
+          </figure>
         </section>
 
         <hr class="divider">
