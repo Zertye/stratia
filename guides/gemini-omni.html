@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+<link href="../iDocs-main/assets/images/favicon.png" rel="icon" />
+<title>Gemini Omni — VFX sur vidéo | StratIA</title>
+<meta name="description" content="Guide complet pour ajouter des VFX sur vos vidéos avec Gemini Omni Flash sur Google Flow. Méthode gratuite par StratIA.">
+<meta name="author" content="StratIA">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" type="text/css" href="../iDocs-main/assets/vendor/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../iDocs-main/assets/vendor/font-awesome/css/all.min.css" />
+<link rel="stylesheet" type="text/css" href="../iDocs-main/assets/vendor/highlight.js/styles/github.css" />
+<link rel="stylesheet" type="text/css" href="../iDocs-main/assets/css/stylesheet.css" />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ── StratIA Brand Overrides ── */
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f8f8; }
+  .idocs-navigation { font-family: 'Inter', sans-serif; }
+  .idocs-content { font-family: 'Inter', sans-serif; }
+
+  .stratia-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #1a1a1a; }
+  .stratia-logo .mark { width: 28px; height: 28px; background: #1a1a1a; border-radius: 7px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 0.75rem; }
+  .stratia-logo .name { font-size: 1rem; font-weight: 600; letter-spacing: -0.03em; color: #1a1a1a; }
+
+  .idocs-content h1 { font-weight: 700; letter-spacing: -0.03em; }
+  .idocs-content h2 { font-weight: 600; letter-spacing: -0.02em; margin-top: 0.5rem; }
+  .idocs-content h3 { font-weight: 600; }
+  .idocs-content section { scroll-margin-top: 80px; }
+
+  .badge-guide { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #888; background: #f0f0f0; padding: 0.25rem 0.7rem; border-radius: 4px; margin-bottom: 0.75rem; }
+
+  .prompt-block { background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1rem 0 1.5rem; font-family: 'SFMono-Regular', Consolas, monospace; font-size: 0.82rem; line-height: 1.65; white-space: pre-wrap; word-break: break-word; color: #24292e; overflow-x: auto; }
+  .prompt-block .prompt-label { display: block; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #888; margin-bottom: 0.75rem; }
+
+  .info-box { background: #f8f9fa; border-left: 3px solid #1a1a1a; padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin: 1rem 0; font-size: 0.9rem; color: #555; }
+  .info-box strong { color: #1a1a1a; }
+
+  .warning-box { background: #fffdf5; border-left: 3px solid #e6a800; padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin: 1rem 0; font-size: 0.9rem; color: #665500; }
+
+  .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: #888; text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: #1a1a1a; text-decoration: none; }
+
+  /* Footer override */
+  #footer { border-top: 1px solid #eee; }
+  #footer p { font-size: 0.8rem; color: #bbb; }
+  #footer a { color: #999; }
+</style>
+</head>
+
+<body data-spy="scroll" data-target=".idocs-navigation" data-offset="125">
+
+<!-- Preloader -->
+<div class="preloader">
+  <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+</div>
+
+<!-- Document Wrapper -->
+<div id="main-wrapper">
+
+  <!-- Header -->
+  <header id="header" class="sticky-top">
+    <nav class="primary-menu navbar navbar-expand-lg navbar-dropdown-dark">
+      <div class="container-fluid">
+        <button id="sidebarCollapse" class="navbar-toggler d-block d-md-none" type="button"><span></span><span class="w-75"></span><span class="w-50"></span></button>
+
+        <a class="stratia-logo ml-md-3" href="../index.html" title="StratIA">
+          <span class="mark">S</span>
+          <span class="name">StratIA</span>
+        </a>
+
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#header-nav"><span></span><span></span><span></span></button>
+
+        <div id="header-nav" class="collapse navbar-collapse justify-content-end">
+          <ul class="navbar-nav">
+            <li><a href="../index.html">← Retour aux guides</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Content -->
+  <div id="content" role="main">
+
+    <!-- Sidebar Navigation -->
+    <div class="idocs-navigation bg-light">
+      <ul class="nav flex-column">
+        <li class="nav-item"><a class="nav-link active" href="#intro">Introduction</a>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="#ce-que-ca-fait">Ce que ça fait</a></li>
+            <li class="nav-item"><a class="nav-link" href="#prerequis">Prérequis</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#methode">La méthode</a>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="#etape-1">1. Tourner la vidéo</a></li>
+            <li class="nav-item"><a class="nav-link" href="#etape-2">2. Découper</a></li>
+            <li class="nav-item"><a class="nav-link" href="#etape-3">3. Écrire le prompt</a></li>
+            <li class="nav-item"><a class="nav-link" href="#etape-4">4. Importer sur Flow</a></li>
+            <li class="nav-item"><a class="nav-link" href="#etape-5">5. Générer</a></li>
+            <li class="nav-item"><a class="nav-link" href="#etape-6">6. Vérifier et corriger</a></li>
+            <li class="nav-item"><a class="nav-link" href="#etape-7">7. Exporter</a></li>
+            <li class="nav-item"><a class="nav-link" href="#etape-8">8. Monter</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#prompts">Nos prompts</a>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="#prompt-1-2">Prompt 1 & 2 — Plage</a></li>
+            <li class="nav-item"><a class="nav-link" href="#prompt-3">Prompt 3 — Forêt tropicale</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#aller-plus-loin">Aller plus loin</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact & suite</a></li>
+      </ul>
+    </div>
+
+    <!-- Docs Content -->
+    <div class="idocs-content">
+      <div class="container">
+
+        <!-- Introduction -->
+        <section id="intro">
+          <span class="badge-guide">Guide</span>
+          <h1>Gemini Omni</h1>
+          <h2>Ajouter des VFX sur vos vidéos — méthode complète</h2>
+          <p class="lead mt-3">Voici la méthode complète, dans l'ordre où on la fait. Rien de technique, et pas besoin de savoir monter.</p>
+          <hr>
+          <div class="row">
+            <div class="col-sm-6 col-lg-4">
+              <ul class="list-unstyled">
+                <li><strong>Par :</strong> <a href="https://strat-ia.fr" target="_blank">StratIA</a></li>
+                <li><strong>Outil :</strong> Gemini Omni Flash</li>
+              </ul>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+              <ul class="list-unstyled">
+                <li><strong>Coût :</strong> Gratuit (50 crédits/jour)</li>
+                <li><strong>Plateforme :</strong> <a href="https://labs.google/fx/fr/tools/flow" target="_blank">Google Flow</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Ce que ça fait -->
+        <section id="ce-que-ca-fait">
+          <h2>Ce que ça fait</h2>
+          <p>Beaucoup de choses, à peu près tout ce qui est imaginable en VFX, à vrai dire.</p>
+          <div class="info-box">
+            <strong>Clarification importante :</strong> cette méthode ne touche pas aux paroles. On ne fait dire à personne ce qu'il n'a pas dit. Ce n'est pas de ça qu'on parle ici, et ce n'est pas ce que fait cette méthode.
+          </div>
+          <p>La conséquence est très concrète : les effets se décident <strong>avant le tournage</strong>. C'est la prise qui commande, donc autant savoir ce qu'on veut en tirer avant d'appuyer sur REC.</p>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Prérequis -->
+        <section id="prerequis">
+          <h2>Ce qu'il faut avoir</h2>
+          <ul>
+            <li><strong>Un compte Google</strong> et un accès à <a href="https://labs.google/fx/fr/tools/flow" target="_blank">Flow</a>.</li>
+            <li><strong>Un VPN.</strong> Le modèle Omni n'est pas accessible en France. Il faut utiliser un VPN (des gratuits sont disponibles, privilégiez un sécurisé) pour contourner cette réglementation.</li>
+            <li><strong>Le plan gratuit de Flow</strong> donne 50 crédits par jour, et l'accès à Gemini Omni Flash. C'est ce qui rend la méthode faisable sans rien payer. Les crédits partent à chaque génération, donc autant préparer ses prompts avant d'ouvrir l'outil.</li>
+            <li><strong>Une vidéo tournée par vos soins</strong>, même au téléphone, même en selfie.</li>
+            <li><strong>Un LLM pour écrire les prompts</strong> (facultatif, mais ça fait gagner du temps). On utilise Claude, c'est celui qu'on trouve le plus utile au quotidien. ChatGPT en version gratuite fait le travail aussi.</li>
+          </ul>
+
+          <div class="warning-box">
+            <strong>Crédits :</strong> une génération coûte 20 crédits. Avec 50 crédits par jour, ça fait deux générations par compte et par jour. Une génération = un extrait de dix secondes maximum. Ça donne environ dix-sept secondes de vidéo finale par jour et par compte. Au-delà, deux options : attendre le lendemain, ou créer un deuxième compte.
+          </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- La méthode -->
+        <section id="methode">
+          <h2>La méthode</h2>
+          <p class="lead">Huit étapes, dans l'ordre.</p>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Étape 1 -->
+        <section id="etape-1">
+          <h3>1. Tourner la vidéo</h3>
+          <p>Imaginer les effets <strong>avant</strong> de tourner. Pour rappel, votre voix ne sera pas modifiée. Les VFX doivent être liés à ce que vous dites durant le tournage.</p>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Étape 2 -->
+        <section id="etape-2">
+          <h3>2. Découper la vidéo si elle dépasse dix secondes</h3>
+          <p>Le modèle ne traite pas plus de dix secondes d'un coup. Et entre deux générations, il ne garde pas la consistance : d'une génération à l'autre, les détails bougent.</p>
+          <p>Donc on découpe, et on découpe en pensant au montage. Le repérage se fait à la main. On note, pour chaque extrait, à quelle seconde (ou à quelle frame) chaque élément doit apparaître et disparaître. C'est ce relevé qui sert de base au prompt, donc autant qu'il soit précis.</p>
+
+          <div class="info-box">
+            <strong>Deux règles pour que les cuts tiennent :</strong>
+            <ul class="mt-2 mb-0">
+              <li>Laisser du <strong>chevauchement</strong> entre la fin d'un extrait et le début du suivant. C'est cette marge qui permet de rattraper le raccord au montage.</li>
+              <li>Couper là où le <strong>sujet est stable</strong>, ou sur un geste qui revient deux fois. Un mouvement identique de part et d'autre du cut, c'est le point de raccord le plus propre qu'on puisse avoir.</li>
+            </ul>
+          </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Étape 3 -->
+        <section id="etape-3">
+          <h3>3. Écrire le prompt</h3>
+          <p>Un prompt par extrait. Si vous passez par un LLM, donnez-lui le contexte complet, sinon il écrit à côté :</p>
+          <ul>
+            <li>C'est un prompt pour <strong>Gemini Omni Flash</strong> sur Google Flow.</li>
+            <li>L'extrait sera assemblé avec d'autres au montage final.</li>
+            <li>Les cuts doivent rester simples : les éléments ajoutés disparaissent avant la fin de l'extrait, les suivants apparaissent après le début du suivant. <strong>Jamais un objet à cheval sur un raccord.</strong></li>
+            <li>Les timestamps du relevé sont à respecter tels quels.</li>
+            <li>Tout le reste est verrouillé : la lumière, le cadrage, la caméra, le décor, le visage, les vêtements, la performance, le timing. On ne retouche rien de la prise.</li>
+            <li>On ajoute seulement, et de la manière la plus naturelle possible : contact avec la lumière existante, ombres portées, occlusions correctes quand l'élément passe derrière le sujet.</li>
+          </ul>
+          <p>Les prompts plus bas servent de modèle. La structure est réutilisable telle quelle, seul le contenu change.</p>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Étape 4 -->
+        <section id="etape-4">
+          <h3>4. Importer l'extrait sur Flow</h3>
+          <p>Un projet, l'extrait, le modèle Gemini Omni Flash, le mode ingrédient, puis le prompt.</p>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Étape 5 -->
+        <section id="etape-5">
+          <h3>5. Générer</h3>
+          <p>Une génération à la fois. Lancer plusieurs générations en parallèle complique le suivi pour rien, et les crédits partent vite.</p>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Étape 6 -->
+        <section id="etape-6">
+          <h3>6. Vérifier et corriger</h3>
+          <p>On regarde le résultat par rapport à ce qui était prévu. Pas de gabarit ici : la correction dépend de l'écart entre les deux. On nomme explicitement ce qui n'a pas marché dans le prompt, et on relance.</p>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Étape 7 -->
+        <section id="etape-7">
+          <h3>7. Exporter</h3>
+          <p>En 1080p, puis directement sur la timeline de montage. Pas de conversion intermédiaire.</p>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Étape 8 -->
+        <section id="etape-8">
+          <h3>8. Monter</h3>
+          <p>Deux choses à savoir avant d'assembler :</p>
+          <ul>
+            <li><strong>Les raccords.</strong> On repère les points où le mouvement est exactement le même d'un extrait à l'autre, ou les keyframes précises où le sujet refait un geste identique. C'est là qu'on fait matcher les prises. Le chevauchement prévu à l'étape 2 sert exactement à ça.</li>
+            <li><strong>Le son.</strong> On utilise la bande son de la vidéo originale, et on pose les VFX par-dessus. Sur les passages parlés, les modèles ne tiennent pas encore la consistance audio d'un extrait à l'autre. Si l'audio généré est bon, rien n'interdit de le garder, mais l'original reste le choix le plus sûr.</li>
+          </ul>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Nos prompts -->
+        <section id="prompts">
+          <h2>Nos prompts</h2>
+          <p>Ce sont ceux de la vidéo, tels quels. Trois prompts vidéo, un par extrait. Servez-vous en comme modèle.</p>
+
+          <div class="info-box">
+            <strong>Comment s'en servir :</strong> envoyez-les à un LLM avec votre propre extrait et votre relevé de timestamps, et demandez-lui de reprendre la structure en l'adaptant. C'est plus rapide que de repartir de zéro, et le résultat est plus stable.
+          </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Prompt 1 & 2 -->
+        <section id="prompt-1-2">
+          <h3>Prompt 1 & 2 — Scène de plage</h3>
+          <div class="prompt-block"><span class="prompt-label">Prompt</span>Edit this vertical beach video. Real footage of a real man talking to camera at dusk. Add two things and nothing else: a polar bear with a small penguin on its back, and a whale breaching far out at sea.
+
+PRESERVE
+Keep the man strictly identical: same face, same body, same clothes, same watch, same bare feet, same gestures, same position and same size in the frame. Keep the original camera movement exactly as it is. Keep the original audio and voice, do not re-generate the speech, do not change a single spoken word, do not modify his mouth or his lip sync. Keep the light exactly as it is: overcast blue hour, cold, soft, low contrast, no sun.
+The clip starts with nothing added on screen and ends with nothing added on screen.
+
+CAMERA
+The camera moves during this clip. He is in the frame for the first four seconds while the camera drifts, then around 3.9s the camera whips fast sideways, he leaves the frame completely, and from about 4.4s to the end the shot holds on the open sea and the empty beach with nobody in it.
+Everything you add is anchored to the world, not to the frame: it stays at the same real place on the beach or in the sea while the camera moves, with correct parallax, and it must be correctly placed and correctly sized in the final framing after the whip.
+
+TIMELINE
+[0.3s to 1.0s] A real adult polar bear walks into the frame on the dry sand well behind him, on the side he points to, with a small penguin sitting on its back. It stops and stands still.
+[1.0s to 2.8s] The bear stays there, breathing and shifting its weight slowly. The penguin turns its head once and shuffles on the bear's back.
+[2.8s to 3.8s] The bear turns around and walks away out of the frame, carrying the penguin, and it is completely gone before the camera whips.
+[3.9s to 4.4s] The camera whips. Nothing added is on screen during the whip.
+[4.4s to 5.4s] Far out at sea, below the horizon and roughly in the middle of the visible water, a humpback whale breaches: the body rises out of the water at an angle, small in the frame because it is genuinely far away.
+[5.4s to 6.0s] It falls back sideways into the sea with a heavy splash, white foam spreading on the surface and then fading into the waves.
+[6.0s to the end] The sea and the beach are exactly as in the original footage, nothing added is visible.
+
+GROUND
+The sand is dry, pale and matte. No reflection of the bear or of the penguin on the sand, no mirror image, no wet or glossy ground, no shine. Only a soft diffuse contact shadow directly under the bear's paws, nothing more.
+
+NEVER COME BACK
+The bear and the penguin must be completely out of the frame before 3.9s and must never reappear. They must not be visible anywhere in the last part of the clip, not in the background, not at the edges of the frame, not revealed by the camera movement. The final framing on the sea and the sand must be clean.
+
+REALISM
+Photorealistic live action, as if filmed by the same phone camera in the same second: same digital noise, same cold desaturated colour, same soft low contrast, same handheld shake, motion blur on anything moving fast and during the whip. Correct scale, correct distance, real water physics for the breach. No cartoon, no CGI look, no glow, no particles, no rim light, no clean cutout edges, no text overlay. Do not add music or sound effects.
+Make everything look real.</div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Prompt 3 -->
+        <section id="prompt-3">
+          <h3>Prompt 3 — Scène de forêt tropicale</h3>
+          <div class="prompt-block"><span class="prompt-label">Prompt</span>Edit this vertical video. Real footage of a real man talking to camera. Two things change and only two: the environment around him, and the light falling on him so that it matches that new environment. Nothing else in the image may change.
+
+SAME MAN
+Same person, same face, same hair, same shirt, same shorts, same watch, same bare feet, same posture, same hand movements, same head movements, same timing, frame for frame. He says exactly the same words: do not re-generate the speech, do not change a single word, do not modify his mouth or his lip sync. He stands in the same spot and does the same thing from the first frame to the last.
+
+FRAMING LOCK
+Do not reframe anything. Same field of view, same focal length, same crop, same aspect ratio, same resolution, same handheld camera movement. The man must occupy exactly the same area of the frame, at exactly the same size and the same position, in every frame. No zoom, no pan, no re-centering, no stabilisation, no cropping of the edges. The output must align frame for frame with the input.
+
+ENVIRONMENT
+From the very first frame to the very last frame he stands in a dense tropical rainforest: forest floor of dark earth and fallen leaves under his bare feet, thick jungle immediately around him and behind him, tall trunks, big low leaves, hanging vines, a canopy closing overhead. No beach, no sand, no sea, no horizon and no open sky anywhere in the frame at any moment. The environment never changes during the clip: no transition, no morph, no fade, it is rainforest from start to finish.
+
+LIGHT ON HIM
+Relight him for the rainforest and nothing more: warm humid green light filtered through the canopy, soft dappled patches moving slightly on his shirt and on his face, warmer skin tone than on the beach, darker surroundings behind him so his silhouette stays readable. His shape, his features, his clothes and his movements stay exactly the same. Only the colour, the softness and the direction of the light on him change.
+
+TIMELINE
+[0.0s to 4.6s] He simply keeps talking in the rainforest, nothing else happens.
+[4.6s to 7.2s] A group of about ten real emperor penguins waddles into the frame from both sides and from behind him, walking on the forest floor towards him. They stop around him without touching him, some looking up at him, some looking straight at the camera.
+[7.2s to the end] They stay gathered around his feet, moving slightly, never touching him, never hiding his face or his body.
+
+REALISM
+Photorealistic live action, same camera as the source: same digital noise, same slight handheld shake, same lens softness. Correct scale, real contact between his bare feet and the forest floor, real shadows on the ground. No cartoon, no CGI look, no glow, no particles, no rim light, no text overlay. Do not add music or sound effects.</div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Aller plus loin -->
+        <section id="aller-plus-loin">
+          <h2>Aller plus loin</h2>
+          <h3>Si vous voulez dépasser le gratuit</h3>
+          <p>Au moment où on écrit ces lignes, les offres Google bougent en permanence : essais d'un mois sur Google AI Pro, offres étudiantes qui ouvrent et se ferment selon les pays et les périodes. Ça vaut le coup de regarder ce qui est actif sur votre compte au moment où vous lisez.</p>
+          <p>On ne s'engage sur aucune de ces offres, elles peuvent très bien avoir disparu d'ici là. N'hésitez pas à utiliser Google AI Studio pour vous tenir au courant, ou trouver une méthode.</p>
+
+          <div class="warning-box">
+            Il existe aussi des sites tiers qui font la même chose sans compte Google. On sait qu'ils existent, on ne les relaie pas et on ne veut pas être associés à leur utilisation. On y envoie son visage à un service dont on ne sait rien, et ce n'est pas un arbitrage qu'on va faire à votre place.
+          </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Contact -->
+        <section id="contact">
+          <h2>Contact & suite</h2>
+
+          <h3>Une question ?</h3>
+          <p>Écrivez-nous en DM. On répond dès qu'on peut. On a d'autres priorités en journée, mais l'équipe passe dessus pour que ceux qui ont commenté ne restent pas bloqués.</p>
+
+          <h3 class="mt-4">La suite</h3>
+          <p>Un test d'outil par semaine. Parfois un outil nouveau, parfois une autre façon d'utiliser les mêmes. On cherche systématiquement la version gratuite, et quand elle n'existe pas, la moins chère qui reste vraiment utile.</p>
+
+          <div class="info-box mt-4">
+            <strong>À garder en tête :</strong> privilégiez le manuel lorsqu'il est possible. Les modèles d'intelligence artificielle sont de véritables destructeurs d'environnement à travers le système qui permet de les rendre utilisables (les data centers). Au plus vous garderez du naturel, au plus vous servirez votre planète et les générations à venir.
+          </div>
+
+          <p class="mt-4">Merci de votre compréhension,<br><strong>L'Équipe StratIA</strong></p>
+
+          <div class="mt-4">
+            <a href="../index.html" class="back-link">← Retour aux guides</a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- Content end -->
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center py-4">
+          <p class="mb-0">© 2026 <a href="../index.html">StratIA</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<!-- Document Wrapper end -->
+
+<!-- JavaScript -->
+<script src="../iDocs-main/assets/vendor/jquery/jquery.min.js"></script>
+<script src="../iDocs-main/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../iDocs-main/assets/vendor/highlight.js/highlight.min.js"></script>
+<script src="../iDocs-main/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../iDocs-main/assets/js/theme.js"></script>
+</body>
+</html>

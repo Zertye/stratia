@@ -5,184 +5,232 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
   <link href="iDocs-main/assets/images/favicon.png" rel="icon" />
-  <title>Tous mes guides – StratIA</title>
-  <meta name="description" content="Retrouvez tous les guides StratIA : IA, prompts, workflows et bonnes pratiques pour booster votre productivité.">
+  <title>StratIA — Guides</title>
+  <meta name="description" content="Guides pratiques StratIA. Méthodes, outils et bonnes pratiques pour vos projets.">
   <meta name="author" content="StratIA">
 
-  <!-- Stylesheets -->
-  <!-- Bootstrap -->
-  <link rel="stylesheet" type="text/css" href="iDocs-main/assets/vendor/bootstrap/css/bootstrap.min.css" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" type="text/css" href="iDocs-main/assets/vendor/font-awesome/css/all.min.css" />
-  <!-- Custom Vitrine -->
-  <link rel="stylesheet" type="text/css" href="assets/css/vitrine.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: #1a1a1a;
+    }
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      background: #1a1a1a;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: -0.02em;
+    }
+    .logo-text {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+    .header-tag {
+      font-size: 0.75rem;
+      color: #999;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ── Main ── */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 2rem;
+    }
+    .hero {
+      text-align: center;
+      max-width: 520px;
+      margin-bottom: 3.5rem;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #666;
+      font-weight: 400;
+    }
+
+    /* ── Guide Card ── */
+    .guides {
+      width: 100%;
+      max-width: 560px;
+    }
+    .guide-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      padding: 1.75rem 2rem;
+      border: 1px solid #e8e8e8;
+      border-radius: 14px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .guide-card:hover {
+      border-color: #ccc;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      transform: translateY(-2px);
+    }
+    .guide-card:active {
+      transform: translateY(0);
+    }
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+    .card-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #999;
+    }
+    .card-arrow {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+    }
+    .guide-card:hover .card-arrow {
+      background: #1a1a1a;
+    }
+    .card-arrow svg {
+      width: 14px;
+      height: 14px;
+      stroke: #999;
+      transition: stroke 0.25s ease;
+    }
+    .guide-card:hover .card-arrow svg {
+      stroke: #fff;
+    }
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+    .card-desc {
+      font-size: 0.88rem;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      padding: 2rem 2.5rem;
+      border-top: 1px solid #f0f0f0;
+      text-align: center;
+    }
+    .site-footer p {
+      font-size: 0.78rem;
+      color: #bbb;
+    }
+    .site-footer a {
+      color: #999;
+      text-decoration: none;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .site-header { padding: 1.25rem 1.5rem; }
+      .hero h1 { font-size: 1.7rem; }
+      .hero p { font-size: 0.95rem; }
+      .guide-card { padding: 1.25rem 1.5rem; }
+      .main { padding: 3rem 1.5rem; }
+    }
+  </style>
 </head>
 
-<body class="vitrine-page">
+<body>
 
-  <!-- Animated Background Mesh -->
-  <div class="bg-mesh"></div>
+  <!-- Header -->
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">S</div>
+      <div class="logo-text">StratIA</div>
+    </a>
+    <span class="header-tag">Guides</span>
+  </header>
 
-  <!-- Main Wrapper -->
-  <div class="vitrine-wrapper">
+  <!-- Main -->
+  <main class="main">
+    <div class="hero">
+      <h1>Nos guides</h1>
+      <p>Méthodes détaillées, étape par étape. Rien de technique, que du concret.</p>
+    </div>
 
-    <!-- Header
-    =============================== -->
-    <header class="vitrine-header">
-      <a href="index.html" class="vitrine-logo">
-        <div class="logo-icon">S</div>
-        <div class="logo-text">Strat<span>IA</span></div>
+    <div class="guides">
+      <a href="guides/gemini-omni.html" class="guide-card" id="guide-gemini-omni">
+        <div class="card-top">
+          <span class="card-label">Guide</span>
+          <span class="card-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+            </svg>
+          </span>
+        </div>
+        <h3 class="card-title">Gemini Omni — VFX sur vidéo</h3>
+        <p class="card-desc">La méthode complète pour ajouter des VFX sur vos vidéos avec Gemini Omni Flash sur Google Flow. Gratuit.</p>
       </a>
-      <div class="header-badge">
-        <i class="fas fa-sparkles"></i>
-        <span>Ressources IA</span>
-      </div>
-    </header>
+    </div>
+  </main>
 
-    <!-- Hero Section
-    =============================== -->
-    <section class="vitrine-hero">
-      <div class="hero-label">
-        <i class="fas fa-circle"></i>
-        Bibliothèque de guides
-      </div>
-      <h1>Tous mes <span class="gradient-text">guides</span></h1>
-      <p>Explorez nos ressources IA : guides pratiques, prompts avancés, workflows et templates pour maîtriser les outils d'intelligence artificielle.</p>
-    </section>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2026 <a href="index.html">StratIA</a></p>
+  </footer>
 
-    <!-- Doc Grid Section
-    =============================== -->
-    <section class="doc-grid-section">
-      <div class="doc-grid">
-
-        <!-- Card 1 – Gemini Omni (Guide principal) -->
-        <a href="iDocs-main/index.html" class="doc-card" id="guide-gemini-omni">
-          <div class="card-icon icon-indigo">
-            <i class="fas fa-robot"></i>
-          </div>
-          <span class="card-category cat-guide">Guide IA</span>
-          <h3 class="card-title">Gemini Omni, by StratIA</h3>
-          <p class="card-desc">Guide complet sur Gemini Omni – fonctionnalités, prompts et cas d'usage pour exploiter tout le potentiel de l'IA Google.</p>
-          <div class="card-meta">
-            <span class="card-type">
-              <i class="fas fa-file-alt"></i>
-              Page HTML
-            </span>
-            <span class="card-arrow">
-              <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-        </a>
-
-        <!-- Card 2 – Prompt Engineering (Placeholder) -->
-        <a href="#" class="doc-card" id="guide-prompt-engineering">
-          <div class="card-icon icon-violet">
-            <i class="fas fa-pen-fancy"></i>
-          </div>
-          <span class="card-category cat-prompt">Prompts</span>
-          <h3 class="card-title">Prompt Engineering Avancé</h3>
-          <p class="card-desc">Techniques de rédaction de prompts pour obtenir des résultats précis et créatifs avec les modèles d'IA générative.</p>
-          <div class="card-meta">
-            <span class="card-type">
-              <i class="fas fa-file-pdf"></i>
-              PDF
-            </span>
-            <span class="card-arrow">
-              <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-        </a>
-
-        <!-- Card 3 – Notion Workflow (Placeholder) -->
-        <a href="#" class="doc-card" id="guide-notion-workflow">
-          <div class="card-icon icon-cyan">
-            <i class="fas fa-project-diagram"></i>
-          </div>
-          <span class="card-category cat-workflow">Workflow</span>
-          <h3 class="card-title">Notion × IA Workflow</h3>
-          <p class="card-desc">Automatisez votre espace Notion avec des workflows IA : templates, bases de données et intégrations intelligentes.</p>
-          <div class="card-meta">
-            <span class="card-type">
-              <i class="fab fa-notion"></i>
-              Notion
-            </span>
-            <span class="card-arrow">
-              <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-        </a>
-
-        <!-- Card 4 – Templates GPT (Placeholder) -->
-        <a href="#" class="doc-card" id="guide-templates-gpt">
-          <div class="card-icon icon-emerald">
-            <i class="fas fa-layer-group"></i>
-          </div>
-          <span class="card-category cat-template">Template</span>
-          <h3 class="card-title">Templates GPT Prêts à l'emploi</h3>
-          <p class="card-desc">Collection de templates GPT personnalisés pour le marketing, la rédaction, l'analyse de données et la stratégie.</p>
-          <div class="card-meta">
-            <span class="card-type">
-              <i class="fas fa-file-alt"></i>
-              Page HTML
-            </span>
-            <span class="card-arrow">
-              <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-        </a>
-
-        <!-- Card 5 – Checklist IA (Placeholder) -->
-        <a href="#" class="doc-card" id="guide-checklist-ia">
-          <div class="card-icon icon-amber">
-            <i class="fas fa-clipboard-check"></i>
-          </div>
-          <span class="card-category cat-checklist">Checklist</span>
-          <h3 class="card-title">Checklist Intégration IA</h3>
-          <p class="card-desc">Liste de vérification complète pour intégrer l'IA dans vos processus métier étape par étape.</p>
-          <div class="card-meta">
-            <span class="card-type">
-              <i class="fas fa-file-pdf"></i>
-              PDF
-            </span>
-            <span class="card-arrow">
-              <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-        </a>
-
-        <!-- Card 6 – Vidéo Tuto (Placeholder) -->
-        <a href="#" class="doc-card" id="guide-video-tuto">
-          <div class="card-icon icon-rose">
-            <i class="fas fa-play-circle"></i>
-          </div>
-          <span class="card-category cat-video">Vidéo</span>
-          <h3 class="card-title">Tuto Vidéo : Premiers pas avec l'IA</h3>
-          <p class="card-desc">Série de tutoriels vidéo pour découvrir les bases de l'IA et configurer vos premiers outils en 30 minutes.</p>
-          <div class="card-meta">
-            <span class="card-type">
-              <i class="fas fa-external-link-alt"></i>
-              Lien externe
-            </span>
-            <span class="card-arrow">
-              <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-        </a>
-
-      </div>
-    </section>
-
-    <!-- Footer
-    =============================== -->
-    <footer class="vitrine-footer">
-      <p>© 2026 <a href="#">StratIA</a> — Tous droits réservés.</p>
-    </footer>
-
-  </div>
-  <!-- Main Wrapper End -->
-
-  <!-- JavaScript -->
-  <script src="iDocs-main/assets/vendor/jquery/jquery.min.js"></script>
-  <script src="iDocs-main/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
